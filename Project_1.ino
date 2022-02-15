@@ -1,26 +1,7 @@
-/*  
- Test the tft.print() viz embedded tft.write() function
-
- This sketch used font 2, 4, 7
- 
- Make sure all the display driver and pin connections are correct by
- editing the User_Setup.h file in the TFT_eSPI library folder.
-
- Note that yield() or delay(0) must be called in long duration for/while
- loops to stop the ESP8266 watchdog triggering.
-
- #########################################################################
- ###### DON'T FORGET TO UPDATE THE User_Setup.h FILE IN THE LIBRARY ######
- #########################################################################
- */
-
-
 #include <TFT_eSPI.h> // Graphics and font library for ST7735 driver chip
 #include <SPI.h>
 
 TFT_eSPI tft = TFT_eSPI();  // Invoke library, pins defined in User_Setup.h
-
-#define TFT_GREY 0x5AEB // New colour
 
 void setup(void) {
   tft.init();
@@ -29,18 +10,11 @@ void setup(void) {
 
 void loop() {
   
-  // Fill screen with grey so we can see the effect of printing with and without 
-  // a background colour defined
+  // Fill screen with black
   tft.fillScreen(TFT_BLACK);
   
-  // Set "cursor" at top left corner of display (0,0) and select font 2
-  // (cursor will move to next line automatically during printing with 'tft.println'
-  //  or stay on the line is there is room for the text with tft.print)
   tft.setCursor(100, 100, 2);
-  // Set the font colour to be white with a black background, set text size multiplier to 1
   tft.setTextColor(TFT_WHITE,TFT_BLACK);  tft.setTextSize(2);
-  // We can now plot text on screen using the "print" class
-  //tft.println("Hello World!");
 
   const char *verse_one[14]  = {"Harry Truman", "Doris Day", "Red China", "Johnnie Ray", "South Pacific", "Walter Winchell", "Joe DiMaggio", "Joe McCarthy", "Richard Nixon", "Studebaker", 
   "television", "North Korea", "South Korea", "Marilyn Monroe"};
@@ -459,26 +433,6 @@ void loop() {
       tft.fillScreen(TFT_BLACK);
     }
   }
-  // Set the font colour to be yellow with no background, set to font 7
-  tft.setTextColor(TFT_YELLOW); tft.setTextFont(2);
-  //tft.println("deadbeef");
-  
-  // Set the font colour to be red with black background, set to font 4
-  tft.setTextColor(TFT_RED,TFT_BLACK);    tft.setTextFont(2);
-  //tft.println("ellis"); // Should print DEADBEEF
-
-  // Set the font colour to be green with black background, set to font 2
-  tft.setTextColor(TFT_GREEN,TFT_BLACK);
-  tft.setTextFont(2);
-  //tft.println("chaotic");
-
-  // Test some print formatting functions
-  float fnumber = 123.45;
-   // Set the font colour to be blue with no background, set to font 2
-  tft.setTextColor(TFT_BLUE);    tft.setTextFont(4);
-  // tft.print("Float = "); tft.println(fnumber);           // Print floating point number
-  // tft.print("Binary = "); tft.println((int)fnumber, BIN); // Print as integer value in binary
-  // tft.print("Hexadecimal = "); tft.println("i'm the one"); // Print as integer number in Hexadecimal
 
   while(1) yield(); // We must yield() to stop a watchdog timeout.
 }
