@@ -8,7 +8,10 @@ I chose a black background to make sure the colors popped. Most of the lyrics ap
 making sure that they really jump out at the viewer just like they would in the actual song. 
 However, the chorus remains in the same spot every time, to convey the reliability of the chorus in the song.
 
-After creating the program, we had to create the contraption to hang our ESP32s from the ceiling in the Milstein Center. 
+I soldered the JST connector to the battery and then connected them to the ESP32. After charging the battery, I flashed the code
+onto the ESP32.
+
+After uploading the program, we had to create the contraption to hang our ESP32s from the ceiling in the Milstein Center. 
 We did so by fashioning a hanging box out thick paper, string, and a popsicle stick. 
 It was a little tricky to make sure the ESP32 remained in the correct position in the box, but a little bit of double-sided tape did the trick.
 
